@@ -6,15 +6,13 @@ import msgpack
 class msgrpc:
     def __init__(self, host, port, username, password):
         self.host = str(host)
-        self.port = int(55552)
+        self.port = int(port)
         self.username = str(username)
         self.password = str(password)
-        self.client
-        self.token
+        self.client = None
 
     def connect(self):
         self.client = httplib.HTTPConnection(self.host, self.port)
-        self.token = ""
 
     def send(self, params):
         headers = {"Content-type" : "binary/message-pack"}
@@ -26,17 +24,17 @@ class msgrpc:
     def login(self):
         return self.send(["auth.login", self.username, self.password])
 
-    def moduleStats(self):
-        return self.send(["core.module_stats", self.token])
+    def moduleStats(self, token):
+        return self.send(["core.module_stats", token])
 
-    def createConsole(self):
-        return self.send(["console.create", self.token])
+    def createConsole(self, token):
+        return self.send(["console.create", token])
 
-    def destroyConsole(self, consoleId):
-        return self.send(["console.destroy", self.token, consoleId])
+    def destroyConsole(self, token, consoleId):
+        return self.send(["console.destroy", token, consoleId])
 
-    def consoleWrite(self, consoleId, data):
-        return self.send(["console.write", self.token, consoleId, data])
+    def consoleWrite(self, token, consoleId, data):
+        return self.send(["console.write", token, consoleId, data])
 
-    def consoleRead(self, consoleId):
-        return self.send(["console.read", self.token, consoleId])
+    def consoleRead(self, token, consoleId):
+        return self.send(["console.read", token, consoleId])

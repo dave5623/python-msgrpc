@@ -1,13 +1,13 @@
 __author__ = 'dave'
 
-import msgrpc
+import MsfMsgrpc
 
 host = "127.0.0.1"
 port = 55552
 username = "msf"
 password = "6jyU0ff8"
 
-msf_msgrpc = msgrpc(host, port, username, password)
+msf_msgrpc = MsfMsgrpc(host, port, username, password)
 
 token = msf_msgrpc.login ()['token']
 

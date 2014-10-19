@@ -1,0 +1,3 @@
+# run this after starting msfconsole
+# resource msgrpc.rc
+load msgrpc ServerHost=172.16.188.128 Pass=pymsgrpc

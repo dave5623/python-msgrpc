@@ -11,9 +11,6 @@ class MsfMsgrpc:
         self.port = int(port)
         self.username = str(username)
         self.password = str(password)
-        self.client = None
-
-    def connect(self):
         self.client = httplib.HTTPConnection(self.host, self.port)
 
     def send(self, params):
